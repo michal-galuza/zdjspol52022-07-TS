@@ -3,6 +3,7 @@ const element = document.querySelector(".my_div");
 const getUsers = () => ["Jack", "Jhon", "Adam"];
 const getObj = () => ({ b: 'b' });
 
+
 // * iteracja tablicy
 // * utworznie elementu 
 // * dodaj kontent do elementu
