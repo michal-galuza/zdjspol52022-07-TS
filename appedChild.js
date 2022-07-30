@@ -5,6 +5,9 @@ newChild.textContent = "My Text" // Dodaje text do elementu
 
 element.appendChild(newChild); // Dodaje dziecko do elementu
 
+
+// Tworzenie wielu elementów 
+
 const newChild = document.createElement("p"); // Tworzy element
 const newChildTwo = document.createElement("p"); // Tworzy element
 const newChildThree = document.createElement("p"); // Tworzy element
