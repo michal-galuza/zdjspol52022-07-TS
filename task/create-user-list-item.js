@@ -1,21 +1,22 @@
-export const createUserListItem = (user, isRed, isSecondUser) => {
-	const userElement = document.createElement("div");
-	if (isSecondUser) {
-		userElement.style.width = "100px";
-		userElement.style.height = "100px";
-		userElement.style.background = "black";
-		return userElement;
-	}
+export const createUserEl = (user, isRed) => {
+	const userEl = document.createElement("div"); // * Tworzy element użytkownika do którego będziemy przyspiać paragrafy
+
 	if (isRed) {
-		userElement.style.color = "red";
+		userEl.style.color = "red";
 	}
 
-	const userNameElement = document.createElement("p");
-	userNameElement.textContent = user.name;
+	const userEmailEl = document.createElement("p"); // * Tworzy paragraf jeden
+	const userNameEl = document.createElement("p"); // * Tworzy paragraf 2
 
-	const userEmailElement = document.createElement("p");
-	userEmailElement.textContent = user.email;
+	userNameEl.textContent = user.name; // * Dodaje text to paragrafu
+	userEmailEl.textContent = user.email; // * Dodaje text to paragrafu
 
-	userElement.append(userNameElement, userEmailElement);
-	return userElement;
+	userEl.append(userNameEl, userEmailEl); // * Dodaje paragrafy do elementu
+
+	return userEl;
 };
+
+export const createUserListElements = (
+	users, // * Funkcja która na podstawie tablicy tworzy tablice childrens
+) =>
+	users.map((user, index) => createUserEl(user, index % 2 === 0, index === 1));

@@ -1,19 +1,23 @@
-import { createUserListItem } from "./create-user-list-item.js";
+import {
+	createUserEl,
+	createUserListElements,
+} from "./create-user-list-item.js";
 import { users } from "./users.js";
 
-const usersListElement = document.querySelector(".users-list");
 const buttonForRemoveTwoLastUsersElement = document.querySelector(
 	".button-for-remove-two-last-users",
 );
 const buttonSortUserByName = document.querySelector(".button-sort-by-name");
 const buttonSortUserByEmail = document.querySelector(".button-sort-by-email");
 
-const createUserListElements = (users) =>
-	users.map((user, index) =>
-		createUserListItem(user, index % 2 === 0, index === 1),
-	);
-
 const renderUserList = (users) => {
+	// * Funkcja która renderuje listę użytkowników na podstawie przekazanej tablicy
+	const usersListElement = document.querySelector(".users-list");
+	
+	while (usersListElement.firstChild) {
+		usersListElement.removeChild(usersListElement.lastChild);
+	}
+
 	usersListElement.replaceChildren(...createUserListElements(users));
 };
 
@@ -23,7 +27,7 @@ buttonForRemoveTwoLastUsersElement.addEventListener("click", () => {
 
 buttonSortUserByName.addEventListener("click", () => {
 	renderUserList(
-		[...users].sort((userA, userB) => userA.email.localeCompare(userB.email)),
+		[...users].sort((userA, userB) => userA.email.localeCompare(userB.email)), // * Locale compare służy do porówywania stringów zwraca -1 0 1 które oznaczają że string jest mnieszy równy lub większy
 	);
 });
 
